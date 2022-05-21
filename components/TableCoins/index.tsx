@@ -14,8 +14,11 @@ const TableCoins = (props: Props) => {
   const { user } = useAppContext();
 
   return (
-    <div className="w-100 rounded-lg m-4 shadow">
+    <div className="w-100 rounded-lg m-12 shadow">
       <div className="flex flex-col">
+        <div className="flex justify-center p-4 shadow">
+          <span className="uppercase font-bold text-lg">Your assets</span>
+        </div>
         {response?.data &&
           user &&
           response.data.map((coin: any) => (

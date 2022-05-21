@@ -33,6 +33,18 @@ export function AppProvider({ children }: { children: React.ReactElement }) {
             symbol: "btc",
             quantity: 0.002,
           },
+          {
+            symbol: "eth",
+            quantity: 0.1,
+          },
+          {
+            symbol: "dai",
+            quantity: 100,
+          },
+          {
+            symbol: "usdt",
+            quantity: 1000,
+          },
         ],
       },
     });

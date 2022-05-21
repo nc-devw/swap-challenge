@@ -32,7 +32,7 @@ const Row = ({ iconUrl, name, symbol, usdPrice, userCoins }: RowProps) => {
   const { currentQuantity, currentUsdPrice } = convertCoinToUsd();
 
   return (
-    <div className="flex justify-between p-4 shadow">
+    <div className="flex justify-between p-6 shadow">
       <div className="flex items-center">
         <div className="h-9 w-9">
           <Image src={iconUrl} alt={symbol} width="100%" height="100%" />
