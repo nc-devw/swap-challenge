@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <div className="bg-blue-600 py-4 px-12">
-      <div className="flex text-white font-semibold items-center">
+    <div className="py-4 px-12 shadow">
+      <div className="flex text-white font-semibold items-center text-neutral-900">
         <div className="flex-[1]">Exchange App</div>
         <div className="flex-[4] flex gap-5">
           <Link href="/">Home</Link>

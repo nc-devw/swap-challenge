@@ -1,11 +1,11 @@
 import React from "react";
-import AvatarProfile from "../../public/assets/AvatarProfile";
+import AccountBalanceWallet from "../../public/assets/AccountBalanceWallet";
 
 const UserProfile = () => {
   return (
     <div className="flex items-center">
-      <div className="w-12 h-12">
-        <AvatarProfile className="w-100 h-100" />
+      <div>
+        <AccountBalanceWallet className="w-6 h-6" />
       </div>
       <span>Balance: 99USD</span>
     </div>
