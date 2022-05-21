@@ -1,5 +1,4 @@
 import React from "react";
-import UserProfile from "../UserProfile";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -25,9 +24,6 @@ const Header = () => {
           <Link href="/">Home</Link>
           <Link href="/swap">Swap</Link>
           <Link href="/swap-status">Swap Status</Link>
-        </div>
-        <div className="flex-[1] justify-end">
-          <UserProfile />
         </div>
       </div>
     </div>

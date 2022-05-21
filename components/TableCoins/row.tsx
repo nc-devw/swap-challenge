@@ -1,36 +1,19 @@
 import React from "react";
 import Image from "next/image";
-import { Coin } from "../../context/global";
+import { CoinsBalance } from ".";
 
-type RowProps = {
-  iconUrl: string;
-  name: string;
-  symbol: string;
-  usdPrice: number;
-  userCoins?: Coin[];
-};
-
-interface current {
-  currentQuantity: number;
-  currentUsdPrice?: number;
+interface RowProps extends CoinsBalance {
+  key: string;
 }
 
-const Row = ({ iconUrl, name, symbol, usdPrice, userCoins }: RowProps) => {
-  const convertCoinToUsd: () => current = React.useCallback(() => {
-    const coin = userCoins?.find((coin) => coin.symbol === symbol);
-
-    if (!coin) {
-      return { currentQuantity: 0 };
-    }
-
-    return {
-      currentQuantity: coin.quantity,
-      currentUsdPrice: coin.quantity * usdPrice,
-    };
-  }, [symbol, usdPrice, userCoins]);
-
-  const { currentQuantity, currentUsdPrice } = convertCoinToUsd();
-
+const Row = ({
+  iconUrl,
+  name,
+  symbol,
+  currentQuantity,
+  currentUsdPrice,
+}: RowProps) => {
+  console.log("name", name);
   return (
     <div className="flex justify-between p-6 shadow">
       <div className="flex items-center">

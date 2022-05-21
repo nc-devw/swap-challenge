@@ -6,10 +6,10 @@ interface AppContext {
 
 interface User {
   name: string;
-  coins: Coin[];
+  coins: CoinUser[];
 }
 
-export interface Coin {
+export interface CoinUser {
   symbol: string;
   quantity: number;
 }

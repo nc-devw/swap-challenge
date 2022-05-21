@@ -14,10 +14,17 @@ interface CoinGeckoData {
   };
 }
 
+export interface Coin {
+  name: string;
+  symbol: string;
+  iconUrl: string;
+  usdPrice: number;
+}
+
 // TODO: averiguar que va en este any
-export const coinApiToCoinApp = (
+export const coinApiToCoinApp: (
   response: AxiosResponse<CoinGeckoData, any>[]
-) =>
+) => Coin[] = (response) =>
   response.map(({ data: { name, symbol, image, market_data } }) => ({
     name,
     symbol,
