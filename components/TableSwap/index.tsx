@@ -4,7 +4,6 @@ import { useAppContext } from "../../context/global";
 import useRestClient from "../../hooks/useRestClient";
 import { Coin } from "../../services/transforms/coins";
 import Card from "../Card";
-import Row from "./row";
 
 type Props = {};
 
@@ -13,7 +12,7 @@ export interface CoinsBalance extends Coin {
   currentUsdPrice?: number;
 }
 
-const TableCoins = (props: Props) => {
+const TableSwap = (props: Props) => {
   const { response }: { response: AxiosResponse<Coin[], any> | undefined } =
     useRestClient({
       method: "GET",
@@ -62,17 +61,47 @@ const TableCoins = (props: Props) => {
   return (
     <Card>
       <div className="flex flex-col">
-        <div className="text-center p-4 shadow">
-          <p className="uppercase font-bold text-lg">Your assets</p>
-          <p className="uppercase text-sm text-gray-400">{`Total Balance: ${balance} USD`}</p>
+        <div className="text-center p-4 border-b">
+          <p className="uppercase font-bold text-lg">Swap</p>
+          <p className="font-bold text-small text-gray-400">
+            Trade tokens in an instant
+          </p>
         </div>
-        {coins.length > 0 &&
-          coins.map((coin: CoinsBalance) => (
-            <Row key={coin.symbol} {...coin} />
-          ))}
+        <div className="flex flex-col border-b p-4">
+          <div className="flex justify-between">
+            <div className="flex">
+              {/* // select */}
+              <span>icon</span>
+              <span>BNB</span>
+              <span>chevron</span>
+            </div>
+            <div>
+              <span>Balance: 0.0017</span>
+            </div>
+          </div>
+          <div>
+            <span>chevron de swap</span>
+          </div>
+          <div className="flex justify-between">
+            <div className="flex">
+              {/* // select */}
+              <span>icon</span>
+              <span>BTC</span>
+              <span>chevron</span>
+            </div>
+            <div>
+              <span>Balance: 0.0017</span>
+            </div>
+          </div>
+        </div>
+        <div className="text-center p-4">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Swap
+          </button>
+        </div>
       </div>
     </Card>
   );
 };
 
-export default TableCoins;
+export default TableSwap;
