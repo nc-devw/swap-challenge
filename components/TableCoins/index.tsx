@@ -20,7 +20,7 @@ const TableCoins = (props: Props) => {
       url: `/coins`,
     });
 
-  const { user } = useAppContext();
+  const { assets } = useAppContext();
 
   const [balance, setBalance] = React.useState(0);
   const [coins, setCoins] = React.useState<CoinsBalance[]>([]);
@@ -28,14 +28,14 @@ const TableCoins = (props: Props) => {
   React.useEffect(() => {
     if (
       response?.data.length === 0 ||
-      user?.coins.length === 0 ||
+      assets.length === 0 ||
       coins.length !== 0
     ) {
       return;
     }
 
     response?.data.forEach((coinData) => {
-      const coin = user?.coins?.find((coin) => coin.symbol === coinData.symbol);
+      const coin = assets.find((coin) => coin.symbol === coinData.symbol);
 
       if (!coin) {
         let newArray = [...coins, { ...coinData, currentQuantity: 0 }];
@@ -58,7 +58,7 @@ const TableCoins = (props: Props) => {
     });
 
     return;
-  }, [response, user]);
+  }, [response, assets]);
   return (
     <Card>
       <div className="flex flex-col">

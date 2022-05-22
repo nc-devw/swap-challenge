@@ -1,12 +1,7 @@
 import React, { useContext } from "react";
 
 interface AppContext {
-  user?: User;
-}
-
-interface User {
-  name: string;
-  coins: CoinUser[];
+  assets: CoinUser[];
 }
 
 export interface CoinUser {
@@ -14,41 +9,87 @@ export interface CoinUser {
   quantity: number;
 }
 
+interface Actions {
+  type: string;
+  payload: SwapAssetsAction;
+}
+
+interface SwapAssetsAction {
+  input: {
+    symbol: string;
+    quantity: number;
+  };
+  output: {
+    symbol: string;
+    quantity: number;
+  };
+}
+
+const initialState = {
+  assets: [
+    {
+      symbol: "btc",
+      quantity: 0.002,
+    },
+    {
+      symbol: "eth",
+      quantity: 0.1,
+    },
+    {
+      symbol: "dai",
+      quantity: 100,
+    },
+    {
+      symbol: "usdt",
+      quantity: 1000,
+    },
+  ],
+};
+
+const actions = {
+  SWAP_ASSETS: "SWAP_ASSETS",
+};
+
+const reducer = (state: AppContext, action: Actions) => {
+  switch (action.type) {
+    case actions.SWAP_ASSETS:
+      return {
+        assets: state.assets.map((coin) => {
+          if (coin.symbol === action.payload.input.symbol) {
+            coin.quantity = action.payload.input.quantity;
+          }
+          if (coin.symbol === action.payload.output.symbol) {
+            coin.quantity = action.payload.output.quantity;
+          }
+          return coin;
+        }),
+      };
+    default:
+      return state;
+  }
+};
+
 // context.js
-export const Ctx = React.createContext<AppContext>({});
+export const Ctx = React.createContext<AppContext>({
+  assets: [],
+});
 
 export function useAppContext() {
   return useContext(Ctx);
 }
 
 export function AppProvider({ children }: { children: React.ReactElement }) {
-  const [app, setApp] = React.useState<AppContext>({});
+  const [state, dispatch] = React.useReducer(reducer, initialState);
 
-  React.useEffect(() => {
-    setApp({
-      user: {
-        name: "ncdevw",
-        coins: [
-          {
-            symbol: "btc",
-            quantity: 0.002,
-          },
-          {
-            symbol: "eth",
-            quantity: 0.1,
-          },
-          {
-            symbol: "dai",
-            quantity: 100,
-          },
-          {
-            symbol: "usdt",
-            quantity: 1000,
-          },
-        ],
-      },
-    });
-  }, []);
+  const value = {
+    assets: state.assets,
+    swapAssets: (payload: {
+      input: { symbol: string; quantity: number };
+      output: { symbol: string; quantity: number };
+    }) => {
+      dispatch({ type: actions.SWAP_ASSETS, payload });
+    },
+  };
 
-  return <Ctx.Provider value={app}>{children}</Ctx.Provider>;
+  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
