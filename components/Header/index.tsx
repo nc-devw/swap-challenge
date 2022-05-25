@@ -6,7 +6,7 @@ import Logo from "../../public/assets/logo.png";
 
 const Header = () => {
   return (
-    <div className="py-4 px-12 shadow">
+    <div className="py-4 px-12 shadow bg-white">
       <div className="flex text-white font-semibold items-center text-neutral-900">
         <div className="flex-[1] flex">
           <div className="w-6 h-6 rounded-full overflow-hidden">

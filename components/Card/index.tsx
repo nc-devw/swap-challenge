@@ -1,7 +1,17 @@
 import React, { ReactNode } from "react";
 
-const Card = ({ children }: { children: ReactNode }) => {
-  return <div className="w-100 rounded-lg m-12 shadow">{children}</div>;
+const Card = ({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) => {
+  return (
+    <div className={`rounded-lg m-12 border shadow bg-white ${className}`}>
+      {children}
+    </div>
+  );
 };
 
 export default Card;
