@@ -9,7 +9,7 @@ interface AppContextState {
 interface AppContext extends AppContextState {
   swapAssets: (payload: Transaction) => void;
   createTransaction: (payload: Transaction) => void;
-  addTransaction: () => void;
+  addTransaction: (payload: { date_created: string }) => void;
   cancelTransaction: () => void;
 }
 
@@ -22,10 +22,12 @@ interface Transaction {
   input?: {
     symbol: string;
     quantity: number;
+    iconUrl: string;
   };
   output?: {
     symbol: string;
     quantity: number;
+    iconUrl: string;
   };
   date_created?: string;
   exchange_rate?: string;
@@ -48,6 +50,10 @@ interface cancelTransactionAction {
 
 interface addTransactionAction {
   type: actionType.ADD_TRANSACTION;
+  payload: {
+    date_created?: string;
+    exchange_rate?: string;
+  };
 }
 
 interface createTransactionAction {
@@ -120,7 +126,10 @@ const reducer = (state: AppContext, action: swapActions): AppContext => {
         ...state,
         transaction: undefined,
         transactions: transaction
-          ? [...state.transactions, transaction]
+          ? [
+              ...state.transactions,
+              { ...transaction, date_created: action.payload.date_created },
+            ]
           : state.transactions,
       };
     default:
@@ -146,7 +155,8 @@ export function AppProvider({ children }: { children: React.ReactElement }) {
       dispatch({ type: actionType.SWAP_ASSETS, payload }),
     createTransaction: (payload: Transaction) =>
       dispatch({ type: actionType.CREATE_TRANSACTION, payload }),
-    addTransaction: () => dispatch({ type: actionType.ADD_TRANSACTION }),
+    addTransaction: (payload: { date_created: string }) =>
+      dispatch({ type: actionType.ADD_TRANSACTION, payload }),
     cancelTransaction: () => dispatch({ type: actionType.CANCEL_TRANSACTION }),
   };
 

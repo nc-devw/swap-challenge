@@ -154,10 +154,12 @@ const TableSwap = (props: Props) => {
                   input: {
                     symbol: currencyInput.symbol,
                     quantity: Number(valueInput),
+                    iconUrl: currencyInput.iconUrl,
                   },
                   output: {
                     symbol: currencyOutput.symbol,
                     quantity: Number(valueOutput),
+                    iconUrl: currencyOutput.iconUrl,
                   },
                 });
                 router.push("/confirmation");
