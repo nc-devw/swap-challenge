@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Card from "../Card";
 import { useAppContext } from "../../context/global";
-import IconWrapper from "../IconWrapper";
 import { useRouter } from "next/router";
 import ChevronRight from "../../public/assets/icons/ChevronRight";
 import Detail from "./detail";
@@ -9,7 +8,8 @@ import Detail from "./detail";
 const ConfirmationCard = () => {
   const router = useRouter();
 
-  const { transaction, addTransaction } = useAppContext();
+  const { transaction, addTransaction, cancelTransaction, swapAssets } =
+    useAppContext();
 
   useEffect(() => {
     if (!transaction) {
@@ -46,12 +46,34 @@ const ConfirmationCard = () => {
           </div>
           <div className="text-center p-4 border-b">
             <button
-              className="text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-700 "
+              className="text-white font-bold py-2 px-4 rounded bg-red-500 hover:bg-red-700 "
+              onClick={() => {
+                cancelTransaction();
+                router.push("/swap");
+              }}
+            >
+              Cancel transaction
+            </button>
+            <button
+              className="ml-2 text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-700 "
               onClick={() => {
                 const now = new Date();
                 addTransaction({
                   date_created: now.toLocaleString("en-US"),
                 });
+
+                if (transaction.input && transaction.output) {
+                  swapAssets({
+                    input: {
+                      symbol: transaction.input.symbol,
+                      quantity: transaction.input.quantity,
+                    },
+                    output: {
+                      symbol: transaction.output.symbol,
+                      quantity: transaction.output.quantity,
+                    },
+                  });
+                }
                 router.push("/transactions");
               }}
             >

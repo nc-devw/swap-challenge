@@ -18,7 +18,10 @@ const TransactionsCard = () => {
           (transaction: Transaction) =>
             transaction.output &&
             transaction.input && (
-              <div className="flex p-4 items-center justify-around">
+              <div
+                className="flex p-4 items-center justify-around"
+                key={transaction.input.symbol}
+              >
                 <span className="font-bold">{transaction.date_created}</span>
                 <Detail
                   iconUrl={transaction.input.iconUrl}

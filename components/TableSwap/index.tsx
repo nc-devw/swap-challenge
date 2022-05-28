@@ -81,10 +81,7 @@ const TableSwap = (props: Props) => {
     if (!Number(valueInput) || !Number(valueOutput)) {
       return false;
     }
-    if (
-      Number(valueInput) > currencyInput.currentQuantity ||
-      Number(valueOutput) > currencyOutput.currentQuantity
-    ) {
+    if (Number(valueInput) > currencyInput.currentQuantity) {
       return false;
     }
 

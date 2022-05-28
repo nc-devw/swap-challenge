@@ -7,7 +7,16 @@ interface AppContextState {
 }
 
 interface AppContext extends AppContextState {
-  swapAssets: (payload: Transaction) => void;
+  swapAssets: (payload: {
+    input: {
+      symbol: string;
+      quantity: number;
+    };
+    output: {
+      symbol: string;
+      quantity: number;
+    };
+  }) => void;
   createTransaction: (payload: Transaction) => void;
   addTransaction: (payload: { date_created: string }) => void;
   cancelTransaction: () => void;
@@ -41,7 +50,16 @@ type swapActions =
 
 interface swapAssetsAction {
   type: actionType.SWAP_ASSETS;
-  payload: Transaction;
+  payload: {
+    input: {
+      symbol: string;
+      quantity: number;
+    };
+    output: {
+      symbol: string;
+      quantity: number;
+    };
+  };
 }
 
 interface cancelTransactionAction {
@@ -98,17 +116,34 @@ enum actionType {
 const reducer = (state: AppContext, action: swapActions): AppContext => {
   switch (action.type) {
     case actionType.SWAP_ASSETS:
+      const indexInput = state.assets.findIndex(
+        (asset) => asset.symbol === action.payload?.input?.symbol
+      );
+
+      const newObjectInput = {
+        symbol: state.assets[indexInput].symbol,
+        quantity:
+          state.assets[indexInput].quantity - action.payload.input.quantity,
+      };
+
+      const indexOutput = state.assets.findIndex(
+        (asset) => asset.symbol === action.payload?.output?.symbol
+      );
+
+      const newObjectOutput = {
+        symbol: state.assets[indexOutput].symbol,
+        quantity:
+          state.assets[indexOutput].quantity - action.payload.output.quantity,
+      };
+
+      const assets = [...state.assets];
+
+      assets[indexInput] = newObjectInput;
+      assets[indexOutput] = newObjectOutput;
+
       return {
         ...state,
-        assets: state.assets.map((coin) => {
-          if (coin.symbol === action.payload?.input?.symbol) {
-            coin.quantity = action.payload.input.quantity;
-          }
-          if (coin.symbol === action.payload?.output?.symbol) {
-            coin.quantity = action.payload.output.quantity;
-          }
-          return coin;
-        }),
+        assets: [...assets],
       };
     case actionType.CREATE_TRANSACTION:
       return {
@@ -151,8 +186,16 @@ export function AppProvider({ children }: { children: React.ReactElement }) {
     assets: state.assets,
     transaction: state.transaction,
     transactions: state.transactions,
-    swapAssets: (payload: Transaction) =>
-      dispatch({ type: actionType.SWAP_ASSETS, payload }),
+    swapAssets: (payload: {
+      input: {
+        symbol: string;
+        quantity: number;
+      };
+      output: {
+        symbol: string;
+        quantity: number;
+      };
+    }) => dispatch({ type: actionType.SWAP_ASSETS, payload }),
     createTransaction: (payload: Transaction) =>
       dispatch({ type: actionType.CREATE_TRANSACTION, payload }),
     addTransaction: (payload: { date_created: string }) =>
