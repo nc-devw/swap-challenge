@@ -1,7 +1,16 @@
 import React, { useContext } from "react";
 
-interface AppContext {
+interface AppContextState {
   assets: CoinUser[];
+  transaction?: Transaction;
+  transactions: Transaction[];
+}
+
+interface AppContext extends AppContextState {
+  swapAssets: (payload: Transaction) => void;
+  createTransaction: (payload: Transaction) => void;
+  addTransaction: () => void;
+  cancelTransaction: () => void;
 }
 
 export interface CoinUser {
@@ -9,23 +18,44 @@ export interface CoinUser {
   quantity: number;
 }
 
-interface Actions {
-  type: string;
-  payload: SwapAssetsAction;
-}
-
-interface SwapAssetsAction {
-  input: {
+interface Transaction {
+  input?: {
     symbol: string;
     quantity: number;
   };
-  output: {
+  output?: {
     symbol: string;
     quantity: number;
   };
+  date_created?: string;
+  exchange_rate?: string;
 }
 
-const initialState = {
+type swapActions =
+  | swapAssetsAction
+  | createTransactionAction
+  | cancelTransactionAction
+  | addTransactionAction;
+
+interface swapAssetsAction {
+  type: actionType.SWAP_ASSETS;
+  payload: Transaction;
+}
+
+interface cancelTransactionAction {
+  type: actionType.CANCEL_TRANSACTION;
+}
+
+interface addTransactionAction {
+  type: actionType.ADD_TRANSACTION;
+}
+
+interface createTransactionAction {
+  type: actionType.CREATE_TRANSACTION;
+  payload: Transaction;
+}
+
+const initialState: AppContext = {
   assets: [
     {
       symbol: "btc",
@@ -44,25 +74,54 @@ const initialState = {
       quantity: 1000,
     },
   ],
+  transaction: undefined,
+  transactions: [],
+  swapAssets: () => {},
+  createTransaction: () => {},
+  cancelTransaction: () => {},
+  addTransaction: () => {},
 };
 
-const actions = {
-  SWAP_ASSETS: "SWAP_ASSETS",
-};
+enum actionType {
+  SWAP_ASSETS = "SWAP_ASSETS",
+  CREATE_TRANSACTION = "CREATE_TRANSACTION",
+  CANCEL_TRANSACTION = "CANCEL_TRANSACTION",
+  ADD_TRANSACTION = "ADD_TRANSACTION",
+}
 
-const reducer = (state: AppContext, action: Actions) => {
+const reducer = (state: AppContext, action: swapActions): AppContext => {
   switch (action.type) {
-    case actions.SWAP_ASSETS:
+    case actionType.SWAP_ASSETS:
       return {
+        ...state,
         assets: state.assets.map((coin) => {
-          if (coin.symbol === action.payload.input.symbol) {
+          if (coin.symbol === action.payload?.input?.symbol) {
             coin.quantity = action.payload.input.quantity;
           }
-          if (coin.symbol === action.payload.output.symbol) {
+          if (coin.symbol === action.payload?.output?.symbol) {
             coin.quantity = action.payload.output.quantity;
           }
           return coin;
         }),
+      };
+    case actionType.CREATE_TRANSACTION:
+      return {
+        ...state,
+        transaction: action.payload,
+      };
+    case actionType.CANCEL_TRANSACTION:
+      return {
+        ...state,
+        transaction: undefined,
+      };
+    case actionType.ADD_TRANSACTION:
+      const transaction = { ...state.transaction };
+      return {
+        ...state,
+        transaction: undefined,
+        transactions: transaction
+          ? [...state.transactions, transaction]
+          : state.transactions,
       };
     default:
       return state;
@@ -70,9 +129,7 @@ const reducer = (state: AppContext, action: Actions) => {
 };
 
 // context.js
-export const Ctx = React.createContext<AppContext>({
-  assets: [],
-});
+export const Ctx = React.createContext<AppContext>(initialState);
 
 export function useAppContext() {
   return useContext(Ctx);
@@ -83,12 +140,14 @@ export function AppProvider({ children }: { children: React.ReactElement }) {
 
   const value = {
     assets: state.assets,
-    swapAssets: (payload: {
-      input: { symbol: string; quantity: number };
-      output: { symbol: string; quantity: number };
-    }) => {
-      dispatch({ type: actions.SWAP_ASSETS, payload });
-    },
+    transaction: state.transaction,
+    transactions: state.transactions,
+    swapAssets: (payload: Transaction) =>
+      dispatch({ type: actionType.SWAP_ASSETS, payload }),
+    createTransaction: (payload: Transaction) =>
+      dispatch({ type: actionType.CREATE_TRANSACTION, payload }),
+    addTransaction: () => dispatch({ type: actionType.ADD_TRANSACTION }),
+    cancelTransaction: () => dispatch({ type: actionType.CANCEL_TRANSACTION }),
   };
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

@@ -26,8 +26,7 @@ const TableSwap = (props: Props) => {
       url: `/coins`,
     });
 
-  const { assets } = useAppContext();
-
+  const { assets, createTransaction } = useAppContext();
   const [coins, setCoins] = React.useState<CoinsBalance[]>([]);
 
   React.useEffect(() => {
@@ -99,9 +98,6 @@ const TableSwap = (props: Props) => {
     setCurrencyOutput(oldCurrencyInput);
     setValueOutput(oldValueInput);
   };
-  console.log("coins", coins);
-  console.log("currencyInput", currencyInput);
-  console.log("currencyOutput", currencyOutput);
 
   return (
     <Card className="w-80">
@@ -154,6 +150,16 @@ const TableSwap = (props: Props) => {
             }`}
             onClick={() => {
               if (isEnabled) {
+                createTransaction({
+                  input: {
+                    symbol: currencyInput.symbol,
+                    quantity: Number(valueInput),
+                  },
+                  output: {
+                    symbol: currencyOutput.symbol,
+                    quantity: Number(valueOutput),
+                  },
+                });
                 router.push("/confirmation");
               }
             }}
