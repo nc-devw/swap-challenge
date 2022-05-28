@@ -18,7 +18,7 @@ export interface CoinUser {
   quantity: number;
 }
 
-interface Transaction {
+export interface Transaction {
   input?: {
     symbol: string;
     quantity: number;

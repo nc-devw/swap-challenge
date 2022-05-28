@@ -23,7 +23,7 @@ const Header = () => {
         <div className="flex-[4] flex gap-5">
           <Link href="/">Home</Link>
           <Link href="/swap">Swap</Link>
-          <Link href="/swap-status">Swap Status</Link>
+          <Link href="/transactions">Transactions</Link>
         </div>
       </div>
     </div>

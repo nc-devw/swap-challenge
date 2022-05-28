@@ -47,11 +47,13 @@ const ConfirmationCard = () => {
           <div className="text-center p-4 border-b">
             <button
               className="text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-700 "
-              onClick={() =>
+              onClick={() => {
+                const now = new Date();
                 addTransaction({
-                  date_created: Date.now.toString(),
-                })
-              }
+                  date_created: now.toLocaleString("en-US"),
+                });
+                router.push("/transactions");
+              }}
             >
               Confirm transaction
             </button>
