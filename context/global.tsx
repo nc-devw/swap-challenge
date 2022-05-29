@@ -1,85 +1,27 @@
 import React, { useContext } from "react";
+import {
+  actionType,
+  AppContext,
+  AppContextWithActions,
+  swapActions,
+  Transaction,
+} from "./types.d";
 
-interface AppContextState {
-  assets: CoinUser[];
-  transaction?: Transaction;
-  transactions: Transaction[];
-}
+const initialTransaction: Transaction = {
+  date_created: "",
+  input: {
+    iconUrl: "",
+    symbol: "",
+    quantity: 0,
+  },
+  output: {
+    iconUrl: "",
+    symbol: "",
+    quantity: 0,
+  },
+};
 
-interface AppContext extends AppContextState {
-  swapAssets: (payload: {
-    input: {
-      symbol: string;
-      quantity: number;
-    };
-    output: {
-      symbol: string;
-      quantity: number;
-    };
-  }) => void;
-  createTransaction: (payload: Transaction) => void;
-  addTransaction: (payload: { date_created: string }) => void;
-  cancelTransaction: () => void;
-}
-
-export interface CoinUser {
-  symbol: string;
-  quantity: number;
-}
-
-export interface Transaction {
-  input?: {
-    symbol: string;
-    quantity: number;
-    iconUrl: string;
-  };
-  output?: {
-    symbol: string;
-    quantity: number;
-    iconUrl: string;
-  };
-  date_created?: string;
-  exchange_rate?: string;
-}
-
-type swapActions =
-  | swapAssetsAction
-  | createTransactionAction
-  | cancelTransactionAction
-  | addTransactionAction;
-
-interface swapAssetsAction {
-  type: actionType.SWAP_ASSETS;
-  payload: {
-    input: {
-      symbol: string;
-      quantity: number;
-    };
-    output: {
-      symbol: string;
-      quantity: number;
-    };
-  };
-}
-
-interface cancelTransactionAction {
-  type: actionType.CANCEL_TRANSACTION;
-}
-
-interface addTransactionAction {
-  type: actionType.ADD_TRANSACTION;
-  payload: {
-    date_created?: string;
-    exchange_rate?: string;
-  };
-}
-
-interface createTransactionAction {
-  type: actionType.CREATE_TRANSACTION;
-  payload: Transaction;
-}
-
-const initialState: AppContext = {
+const initialState: AppContextWithActions = {
   assets: [
     {
       symbol: "btc",
@@ -98,20 +40,13 @@ const initialState: AppContext = {
       quantity: 1000,
     },
   ],
-  transaction: undefined,
+  transaction: { ...initialTransaction },
   transactions: [],
   swapAssets: () => {},
   createTransaction: () => {},
   cancelTransaction: () => {},
   addTransaction: () => {},
 };
-
-enum actionType {
-  SWAP_ASSETS = "SWAP_ASSETS",
-  CREATE_TRANSACTION = "CREATE_TRANSACTION",
-  CANCEL_TRANSACTION = "CANCEL_TRANSACTION",
-  ADD_TRANSACTION = "ADD_TRANSACTION",
-}
 
 const reducer = (state: AppContext, action: swapActions): AppContext => {
   switch (action.type) {
@@ -153,13 +88,13 @@ const reducer = (state: AppContext, action: swapActions): AppContext => {
     case actionType.CANCEL_TRANSACTION:
       return {
         ...state,
-        transaction: undefined,
+        transaction: { ...initialTransaction },
       };
     case actionType.ADD_TRANSACTION:
       const transaction = { ...state.transaction };
       return {
         ...state,
-        transaction: undefined,
+        transaction: { ...initialTransaction },
         transactions: transaction
           ? [
               ...state.transactions,
@@ -173,7 +108,7 @@ const reducer = (state: AppContext, action: swapActions): AppContext => {
 };
 
 // context.js
-export const Ctx = React.createContext<AppContext>(initialState);
+export const Ctx = React.createContext<AppContextWithActions>(initialState);
 
 export function useAppContext() {
   return useContext(Ctx);
