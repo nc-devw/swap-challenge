@@ -1,11 +1,11 @@
-import { render, waitFor } from "@testing-library/react";
-import Home, { getServerSideProps } from "@/pages/index";
+import { render } from "@testing-library/react";
+import Swap, { getServerSideProps } from "@/pages/swap";
 
 jest.mock("../../helpers/fetchData", () => () => ({ data: [] }));
 
-describe("Home", () => {
+describe("Swap", () => {
   it("should render correctly", () => {
-    const { asFragment } = render(<Home coins={[]} />);
+    const { asFragment } = render(<Swap coins={[]} />);
     expect(asFragment).toMatchSnapshot();
   });
 
