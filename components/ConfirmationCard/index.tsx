@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "../Card";
-import { useAppContext } from "../../context/global";
+import { useAppContext } from "@/context/global";
 import { useRouter } from "next/router";
-import ChevronRight from "../../public/assets/icons/ChevronRight";
+import ChevronRight from "@/public/assets/icons/ChevronRight";
 import Detail from "./detail";
 
 const ConfirmationCard = () => {

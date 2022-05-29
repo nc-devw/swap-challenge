@@ -1,11 +1,9 @@
-import { AxiosResponse } from "axios";
 import { useRouter } from "next/router";
 import React from "react";
-import { useAppContext } from "../../context/global";
-import useRestClient from "../../helpers/fetchData";
-import SwapIcon from "../../public/assets/icons/Swap";
-import { Coin } from "../../services/transforms/coins";
-import Card from "../Card";
+import { useAppContext } from "@/context/global";
+import SwapIcon from "@/public/assets/icons/Swap";
+import { Coin } from "@/services/transforms/coins";
+import Card from "@/components/Card";
 import SelectCoin from "./SelectCoin";
 
 type Props = {

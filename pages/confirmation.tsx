@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import ConfirmationCard from "../components/ConfirmationCard";
-import { useAppContext } from "../context/global";
+import ConfirmationCard from "@/components/ConfirmationCard";
+import { useAppContext } from "@/context/global";
 
 const ConfirmationPage: NextPage = () => {
   const router = useRouter();

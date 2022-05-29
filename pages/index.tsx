@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import TableCoins from "../components/TableCoins";
-import fetchData from "../helpers/fetchData";
-import { Coin } from "../services/transforms/coins";
+import TableCoins from "@/components/TableCoins";
+import fetchData from "@/helpers/fetchData";
+import { Coin } from "@/services/transforms/coins";
 
 interface Props {
   coins: Coin[];

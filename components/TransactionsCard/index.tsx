@@ -1,8 +1,8 @@
 import React from "react";
-import { useAppContext } from "../../context/global";
-import { Transaction } from "../../context/types.d";
-import ChevronRight from "../../public/assets/icons/ChevronRight";
-import Card from "../Card";
+import { useAppContext } from "@/context/global";
+import { Transaction } from "@/context/types.d";
+import ChevronRight from "@/public/assets/icons/ChevronRight";
+import Card from "@/components/Card";
 import Detail from "./detail";
 
 const TransactionsCard = () => {

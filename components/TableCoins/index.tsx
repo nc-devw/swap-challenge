@@ -1,8 +1,7 @@
-import { AxiosResponse } from "axios";
 import React from "react";
-import { useAppContext } from "../../context/global";
-import { Coin } from "../../services/transforms/coins";
-import Card from "../Card";
+import { useAppContext } from "@/context/global";
+import { Coin } from "@/services/transforms/coins";
+import Card from "@/components/Card";
 import Row from "./row";
 
 type Props = {

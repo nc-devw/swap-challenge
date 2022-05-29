@@ -1,6 +1,6 @@
 import React from "react";
 import { CoinsBalance } from ".";
-import IconWrapper from "../IconWrapper";
+import IconWrapper from "@/components/IconWrapper";
 
 interface RowProps extends CoinsBalance {
   key: string;

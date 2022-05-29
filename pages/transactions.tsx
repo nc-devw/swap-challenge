@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import TransactionsCard from "../components/TransactionsCard";
+import TransactionsCard from "@/components/TransactionsCard";
 
 const TransactionsPage: NextPage = () => {
   return (

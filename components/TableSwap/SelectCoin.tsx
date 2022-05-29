@@ -1,7 +1,7 @@
-import React, { ReactEventHandler } from "react";
+import React from "react";
 import Image from "next/image";
 import { CoinsBalance } from ".";
-import ExpandMore from "../../public/assets/icons/ExpandMore";
+import ExpandMore from "@/public/assets/icons/ExpandMore";
 
 const SelectCoin = ({
   coins,
