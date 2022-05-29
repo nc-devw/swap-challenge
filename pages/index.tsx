@@ -1,8 +1,14 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import TableCoins from "../components/TableCoins";
+import fetchData from "../helpers/fetchData";
+import { Coin } from "../services/transforms/coins";
 
-const HomePage: NextPage = () => {
+interface Props {
+  coins: Coin[];
+}
+
+const HomePage: NextPage<Props, any> = ({ coins }) => {
   return (
     <>
       <Head>
@@ -11,10 +17,19 @@ const HomePage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="container mx-auto">
-        <TableCoins />
+        <TableCoins coins={coins} />
       </div>
     </>
   );
 };
+
+export async function getServerSideProps() {
+  const response = await fetchData({
+    method: "GET",
+    url: `/api/coins`,
+  });
+
+  return { props: { coins: response.data } };
+}
 
 export default HomePage;

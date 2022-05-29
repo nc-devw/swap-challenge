@@ -1,8 +1,14 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import TableSwap from "../components/TableSwap";
+import fetchData from "../helpers/fetchData";
+import { Coin } from "../services/transforms/coins";
 
-const Swap: NextPage = () => (
+interface Props {
+  coins: Coin[];
+}
+
+const Swap: NextPage<Props, any> = ({ coins }) => (
   <>
     <Head>
       <title>Belo | Sawp</title>
@@ -10,9 +16,18 @@ const Swap: NextPage = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <div className="container mx-auto flex justify-center">
-      <TableSwap />
+      <TableSwap coins={coins} />
     </div>
   </>
 );
+
+export async function getServerSideProps() {
+  const response = await fetchData({
+    method: "GET",
+    url: `/api/coins`,
+  });
+
+  return { props: { coins: response.data } };
+}
 
 export default Swap;

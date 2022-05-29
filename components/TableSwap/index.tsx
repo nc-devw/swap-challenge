@@ -2,13 +2,15 @@ import { AxiosResponse } from "axios";
 import { useRouter } from "next/router";
 import React from "react";
 import { useAppContext } from "../../context/global";
-import useRestClient from "../../hooks/useRestClient";
+import useRestClient from "../../helpers/fetchData";
 import SwapIcon from "../../public/assets/icons/Swap";
 import { Coin } from "../../services/transforms/coins";
 import Card from "../Card";
 import SelectCoin from "./SelectCoin";
 
-type Props = {};
+type Props = {
+  coins: Coin[];
+};
 
 export interface CoinsBalance extends Coin {
   currentQuantity: number;
@@ -17,28 +19,15 @@ export interface CoinsBalance extends Coin {
 
 const classDisabled = "cursor-not-allowed bg-gray-400 hover:bg-gray-600";
 
-const TableSwap = (props: Props) => {
+const TableSwap = ({ coins: coinsData }: Props) => {
   const router = useRouter();
-
-  const { response }: { response: AxiosResponse<Coin[], any> | undefined } =
-    useRestClient({
-      method: "GET",
-      url: `/coins`,
-    });
 
   const { assets, createTransaction } = useAppContext();
   const [coins, setCoins] = React.useState<CoinsBalance[]>([]);
 
   React.useEffect(() => {
-    if (
-      response?.data.length === 0 ||
-      assets.length === 0 ||
-      coins.length !== 0
-    ) {
-      return;
-    }
-
-    response?.data.forEach((coinData) => {
+    setCoins([]);
+    coinsData.forEach((coinData) => {
       const coin = assets?.find((coin) => coin.symbol === coinData.symbol);
 
       if (!coin) {
@@ -64,7 +53,7 @@ const TableSwap = (props: Props) => {
     });
 
     return;
-  }, [response, assets]);
+  }, [assets]);
 
   const [currencyInput, setCurrencyInput] = React.useState(coins[0]);
   const [currencyOutput, setCurrencyOutput] = React.useState(coins[1]);
@@ -158,6 +147,7 @@ const TableSwap = (props: Props) => {
                     quantity: Number(valueOutput),
                     iconUrl: currencyOutput.iconUrl,
                   },
+                  date_created: "",
                 });
                 router.push("/confirmation");
               }

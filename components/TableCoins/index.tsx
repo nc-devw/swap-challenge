@@ -1,40 +1,28 @@
 import { AxiosResponse } from "axios";
 import React from "react";
 import { useAppContext } from "../../context/global";
-import useRestClient from "../../hooks/useRestClient";
 import { Coin } from "../../services/transforms/coins";
 import Card from "../Card";
 import Row from "./row";
 
-type Props = {};
+type Props = {
+  coins: Coin[];
+};
 
 export interface CoinsBalance extends Coin {
   currentQuantity: number;
   currentUsdPrice?: number;
 }
 
-const TableCoins = (props: Props) => {
-  const { response }: { response: AxiosResponse<Coin[], any> | undefined } =
-    useRestClient({
-      method: "GET",
-      url: `/coins`,
-    });
-
+const TableCoins = ({ coins: coinsData }: Props) => {
   const { assets } = useAppContext();
 
   const [balance, setBalance] = React.useState(0);
   const [coins, setCoins] = React.useState<CoinsBalance[]>([]);
 
   React.useEffect(() => {
-    if (
-      response?.data.length === 0 ||
-      assets.length === 0 ||
-      coins.length !== 0
-    ) {
-      return;
-    }
-
-    response?.data.forEach((coinData) => {
+    setCoins([]);
+    coinsData.forEach((coinData) => {
       const coin = assets.find((coin) => coin.symbol === coinData.symbol);
 
       if (!coin) {
@@ -53,12 +41,9 @@ const TableCoins = (props: Props) => {
           currentUsdPrice,
         },
       ]);
-
-      return;
     });
+  }, [assets]);
 
-    return;
-  }, [response, assets]);
   return (
     <Card>
       <div className="flex flex-col">
