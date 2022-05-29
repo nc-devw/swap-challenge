@@ -68,7 +68,7 @@ const reducer = (state: AppContext, action: swapActions): AppContext => {
       const newObjectOutput = {
         symbol: state.assets[indexOutput].symbol,
         quantity:
-          state.assets[indexOutput].quantity - action.payload.output.quantity,
+          state.assets[indexOutput].quantity + action.payload.output.quantity,
       };
 
       const assets = [...state.assets];
@@ -91,16 +91,15 @@ const reducer = (state: AppContext, action: swapActions): AppContext => {
         transaction: { ...initialTransaction },
       };
     case actionType.ADD_TRANSACTION:
-      const transaction = { ...state.transaction };
+      const transactions = [
+        ...state.transactions,
+        { ...state.transaction, date_created: action.payload.date_created },
+      ];
+      console.log("transactions", transactions);
       return {
         ...state,
         transaction: { ...initialTransaction },
-        transactions: transaction
-          ? [
-              ...state.transactions,
-              { ...transaction, date_created: action.payload.date_created },
-            ]
-          : state.transactions,
+        transactions: transactions,
       };
     default:
       return state;

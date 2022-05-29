@@ -11,16 +11,8 @@ const ConfirmationCard = () => {
   const { transaction, addTransaction, cancelTransaction, swapAssets } =
     useAppContext();
 
-  useEffect(() => {
-    if (!transaction) {
-      router.push("/swap");
-    }
-  }, []);
-
   return (
-    transaction &&
-    transaction.input &&
-    transaction.output && (
+    (transaction.input.iconUrl && transaction.output.iconUrl && (
       <Card>
         <div className="flex flex-col">
           <div className="text-center p-4 border-b">
@@ -30,19 +22,21 @@ const ConfirmationCard = () => {
             </p>
           </div>
           <div className="flex justify-around p-4 border-b">
-            <Detail
-              iconUrl={transaction.input.iconUrl}
-              symbol={transaction.input.symbol}
-              quantity={transaction.input.quantity}
-            />
-            <div className="flex items-center">
-              <ChevronRight className="h-12 w-12" />
-            </div>
-            <Detail
-              iconUrl={transaction.output.iconUrl}
-              symbol={transaction.output.symbol}
-              quantity={transaction.output.quantity}
-            />
+            <>
+              <Detail
+                iconUrl={transaction.input.iconUrl}
+                symbol={transaction.input.symbol}
+                quantity={transaction.input.quantity}
+              />
+              <div className="flex items-center">
+                <ChevronRight className="h-12 w-12" />
+              </div>
+              <Detail
+                iconUrl={transaction.output.iconUrl}
+                symbol={transaction.output.symbol}
+                quantity={transaction.output.quantity}
+              />
+            </>
           </div>
           <div className="text-center p-4 border-b">
             <button
@@ -58,22 +52,21 @@ const ConfirmationCard = () => {
               className="ml-2 text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-700 "
               onClick={() => {
                 const now = new Date();
+                swapAssets({
+                  input: {
+                    symbol: transaction.input.symbol,
+                    quantity: transaction.input.quantity,
+                  },
+                  output: {
+                    symbol: transaction.output.symbol,
+                    quantity: transaction.output.quantity,
+                  },
+                });
+
                 addTransaction({
                   date_created: now.toLocaleString("en-US"),
                 });
 
-                if (transaction.input && transaction.output) {
-                  swapAssets({
-                    input: {
-                      symbol: transaction.input.symbol,
-                      quantity: transaction.input.quantity,
-                    },
-                    output: {
-                      symbol: transaction.output.symbol,
-                      quantity: transaction.output.quantity,
-                    },
-                  });
-                }
                 router.push("/transactions");
               }}
             >
@@ -82,7 +75,7 @@ const ConfirmationCard = () => {
           </div>
         </div>
       </Card>
-    )
+    )) || <></>
   );
 };
 
