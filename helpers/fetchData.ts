@@ -4,7 +4,7 @@ let baseUrl = "http://localhost:3000";
 
 const fetchData = async (params: AxiosRequestConfig) => {
   if (process.env.VERCEL_URL) {
-    baseUrl = process.env.VERCEL_URL;
+    baseUrl = "https://" + process.env.VERCEL_URL;
   }
 
   axios.defaults.baseURL = baseUrl;
