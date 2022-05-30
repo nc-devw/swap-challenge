@@ -15,19 +15,19 @@ describe("FetchData", () => {
   afterAll(() => {
     process.env = oldEnv;
   });
-  // it("should execute with correct params", async () => {
-  //   const params = "testParams";
+  it("should execute with correct params", async () => {
+    const params = "testParams";
 
-  //   await fetchData("testParams");
+    await fetchData("testParams");
 
-  //   expect(mockRequest).toBeCalledWith(params);
-  // });
+    expect(mockRequest).toBeCalledWith(params);
+  });
 
   it("should change base url axios", async () => {
     process.env.VERCEL_URL = "test";
 
     await fetchData();
 
-    expect(axios.defaults.baseURL).toEqual("test");
+    expect(axios.defaults.baseURL).toEqual("https://test");
   });
 });

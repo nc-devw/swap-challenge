@@ -2,8 +2,8 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import ConfirmationCard from "@/components/ConfirmationCard";
 
 let transaction = {
-  input: { iconUrl: "http://test" },
-  output: { iconUrl: "http://test" },
+  input: { iconUrl: "http://test", quantity: 0 },
+  output: { iconUrl: "http://test", quantity: 0 },
 };
 const mockPush = jest.fn();
 const mockCancelTransaction = jest.fn();

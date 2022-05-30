@@ -2,8 +2,8 @@ import { render } from "@testing-library/react";
 import Confirmation from "@/pages/confirmation";
 
 let transaction = {
-  input: { iconUrl: "http://test" },
-  output: { iconUrl: "http://test" },
+  input: { iconUrl: "http://test", quantity: 0 },
+  output: { iconUrl: "http://test", quantity: 0 },
 };
 const mockPush = jest.fn();
 
