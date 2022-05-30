@@ -8,6 +8,7 @@ const customJestConfig = {
   moduleDirectories: ["node_modules", "src"],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   moduleNameMapper: {
+    "\\.(jpg|jpeg|png)$": "<rootDir>/mocks/fileMock.js",
     "^@/components/(.*)$": "<rootDir>/components/$1",
     "^@/pages/(.*)$": "<rootDir>/pages/$1",
     "^@/context/(.*)$": "<rootDir>/context/$1",
