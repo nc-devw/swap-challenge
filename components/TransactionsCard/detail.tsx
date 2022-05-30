@@ -18,7 +18,7 @@ const Detail = ({ iconUrl, symbol, quantity, output }: Props) => {
           } font-bold`}
         >
           {`${output ? "+" : "-"}`}
-          {quantity}
+          {parseFloat(quantity.toFixed(5))}
         </span>
       </div>
       <span className="pl-2 uppercase font-bold">{symbol}</span>

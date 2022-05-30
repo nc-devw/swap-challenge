@@ -23,7 +23,9 @@ const Row = ({
     </div>
     <div className="text-right">
       <div className="font-bold">$ {currentUsdPrice}</div>
-      <div className="font-light text-sm text-gray-400">{`${currentQuantity} ${symbol}`}</div>
+      <div className="font-light text-sm text-gray-400">{`${parseFloat(
+        currentQuantity.toFixed(5)
+      )} ${symbol}`}</div>
     </div>
   </div>
 );

@@ -75,7 +75,9 @@ const SelectCoin = ({
           <ExpandMore className="h-6 w-6" />
         </div>
         <div className="pl-6 text-sm text-gray-400">
-          <span>Balance: {currency?.currentQuantity.toFixed(5)}</span>
+          <span>
+            Balance: {parseFloat(currency?.currentQuantity.toFixed(5))}
+          </span>
         </div>
         <div
           style={{ display: open ? "block" : "none" }}

@@ -15,7 +15,7 @@ const TransactionsCard = () => {
         </div>
         {transactions.map((transaction: Transaction) => (
           <div
-            className="flex p-4 items-center justify-around"
+            className="flex flex-col p-4 items-center justify-around border-b"
             key={transaction.input.symbol}
           >
             <span className="font-bold">{transaction.date_created}</span>
@@ -24,7 +24,7 @@ const TransactionsCard = () => {
               symbol={transaction.input.symbol}
               quantity={transaction.input.quantity}
             />
-            <div className="flex items-center">
+            <div className="flex items-center rotate-90 md:rotate-0">
               <ChevronRight className="h-12 w-12" />
             </div>
             <Detail

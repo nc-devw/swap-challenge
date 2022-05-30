@@ -18,7 +18,7 @@ const Header = () => {
               objectFit="contain"
             />
           </div>
-          <span className="ml-2">Belo Challenge</span>
+          <span className="ml-2 hidden md:block">Belo Challenge</span>
         </div>
         <div className="flex-[4] flex gap-5">
           <Link href="/">Home</Link>

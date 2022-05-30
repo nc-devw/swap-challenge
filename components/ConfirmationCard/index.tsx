@@ -41,7 +41,7 @@ const ConfirmationCard = () => {
           <div className="text-center p-4 border-b">
             <button
               data-testid="confirm-cancel-button"
-              className="text-white font-bold py-2 px-4 rounded bg-red-500 hover:bg-red-700 "
+              className="text-white font-bold py-2 px-4 rounded bg-red-500 hover:bg-red-700 w-52"
               onClick={() => {
                 cancelTransaction();
                 router.push("/swap");
@@ -51,7 +51,7 @@ const ConfirmationCard = () => {
             </button>
             <button
               data-testid="confirm-ok-button"
-              className="ml-2 text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-700 "
+              className="mt-2 md:mt-0 md:ml-2 text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-700 w-52"
               onClick={() => {
                 const now = new Date();
                 swapAssets({
