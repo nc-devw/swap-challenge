@@ -14,6 +14,7 @@ const customJestConfig = {
     "^@/context/(.*)$": "<rootDir>/context/$1",
     "^@/helpers/(.*)$": "<rootDir>/helpers/$1",
     "^@/public/(.*)$": "<rootDir>/public/$1",
+    "^@/reducers/(.*)$": "<rootDir>/reducers/$1",
     "^@/services/(.*)$": "<rootDir>/services/$1",
     "^@/styles/(.*)$": "<rootDir>/styles/$1",
   },
@@ -25,6 +26,7 @@ const customJestConfig = {
     "!pages/_document.tsx",
     "helpers/**/*.{ts,tsx}",
     "context/**/*.{ts,tsx}",
+    "reducers/**/*.{ts,tsx}",
   ],
 };
 

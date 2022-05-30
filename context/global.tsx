@@ -1,13 +1,9 @@
 import React, { useContext } from "react";
-import {
-  actionType,
-  AppContext,
-  AppContextWithActions,
-  swapActions,
-  Transaction,
-} from "./types.d";
+import reducer from "@/reducers/global";
+import { actionType } from "@/reducers/index.d";
+import { AppContextWithActions, Transaction } from "./types.d";
 
-const initialTransaction: Transaction = {
+export const initialTransaction: Transaction = {
   date_created: "",
   input: {
     iconUrl: "",
@@ -48,65 +44,6 @@ const initialState: AppContextWithActions = {
   addTransaction: () => {},
 };
 
-const reducer = (state: AppContext, action: swapActions): AppContext => {
-  switch (action.type) {
-    case actionType.SWAP_ASSETS:
-      const indexInput = state.assets.findIndex(
-        (asset) => asset.symbol === action.payload?.input?.symbol
-      );
-
-      const newObjectInput = {
-        symbol: state.assets[indexInput].symbol,
-        quantity:
-          state.assets[indexInput].quantity - action.payload.input.quantity,
-      };
-
-      const indexOutput = state.assets.findIndex(
-        (asset) => asset.symbol === action.payload?.output?.symbol
-      );
-
-      const newObjectOutput = {
-        symbol: state.assets[indexOutput].symbol,
-        quantity:
-          state.assets[indexOutput].quantity + action.payload.output.quantity,
-      };
-
-      const assets = [...state.assets];
-
-      assets[indexInput] = newObjectInput;
-      assets[indexOutput] = newObjectOutput;
-
-      return {
-        ...state,
-        assets: [...assets],
-      };
-    case actionType.CREATE_TRANSACTION:
-      return {
-        ...state,
-        transaction: action.payload,
-      };
-    case actionType.CANCEL_TRANSACTION:
-      return {
-        ...state,
-        transaction: { ...initialTransaction },
-      };
-    case actionType.ADD_TRANSACTION:
-      const transactions = [
-        ...state.transactions,
-        { ...state.transaction, date_created: action.payload.date_created },
-      ];
-      console.log("transactions", transactions);
-      return {
-        ...state,
-        transaction: { ...initialTransaction },
-        transactions: transactions,
-      };
-    default:
-      return state;
-  }
-};
-
-// context.js
 export const Ctx = React.createContext<AppContextWithActions>(initialState);
 
 export function useAppContext() {
