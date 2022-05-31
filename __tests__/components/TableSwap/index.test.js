@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react";
-import TableCoins from "@/components/TableCoins";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import TableSwap from "@/components/TableSwap";
 
 const mockCoins = [
   {
@@ -7,7 +7,14 @@ const mockCoins = [
     symbol: "btc",
     iconUrl:
       "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579",
-    usdPrice: 31872,
+    usdPrice: 31661,
+  },
+  {
+    name: "Ethereum",
+    symbol: "eth",
+    iconUrl:
+      "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
+    usdPrice: 1994.29,
   },
   {
     name: "USD Coin",
@@ -25,13 +32,17 @@ jest.mock("@/context/global", () => ({
         symbol: "btc",
         quantity: 0.002,
       },
+      {
+        symbol: "usdc",
+        quantity: 100,
+      },
     ],
   }),
 }));
 
-describe("Table Coins", () => {
+describe("Table Swap", () => {
   it("should render correctly", () => {
-    const { asFragment } = render(<TableCoins coins={mockCoins} />);
+    const { asFragment } = render(<TableSwap coins={mockCoins} />);
     expect(asFragment()).toBeDefined();
     expect(asFragment()).toMatchSnapshot();
   });

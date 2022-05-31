@@ -6,7 +6,8 @@ jest.mock("../../helpers/fetchData", () => () => ({ data: [] }));
 describe("Swap", () => {
   it("should render correctly", () => {
     const { asFragment } = render(<Swap coins={[]} />);
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toBeDefined();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it("should receive properties correctly", async () => {

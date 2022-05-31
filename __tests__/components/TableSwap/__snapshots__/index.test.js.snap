@@ -1,0 +1,270 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table Swap should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="rounded-lg m-12 border shadow bg-white w-80"
+  >
+    <div
+      class="flex flex-col"
+    >
+      <div
+        class="text-center p-4 border-b"
+      >
+        <p
+          class="uppercase font-bold text-lg"
+        >
+          Swap
+        </p>
+        <p
+          class="font-bold text-small text-gray-400"
+        >
+          Trade tokens in an instant
+        </p>
+      </div>
+      <div
+        class="flex flex-col border-b p-4 items-center"
+      >
+        <div
+          class="flex"
+        >
+          <div
+            class="flex"
+          >
+            <div
+              class="flex flex-col items-center"
+            >
+              <div
+                class="flex relative"
+              >
+                <div
+                  class="flex cursor-pointer"
+                >
+                  <span
+                    style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+                  >
+                    <span
+                      style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                    >
+                      <img
+                        alt=""
+                        aria-hidden="true"
+                        src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720%27%20height=%2720%27/%3e"
+                        style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                      />
+                    </span>
+                    <img
+                      alt="cripto"
+                      data-nimg="intrinsic"
+                      decoding="async"
+                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                      style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                    />
+                    <noscript />
+                  </span>
+                  <span
+                    class="ml-2 uppercase font-bold"
+                  >
+                    eth
+                  </span>
+                  <svg
+                    class="h-6 w-6"
+                    viewBox="0 0 50 50"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M24 30.75 12 18.75 14.15 16.6 24 26.5 33.85 16.65 36 18.8Z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="pl-6 text-sm text-gray-400"
+                >
+                  <span>
+                    Balance: 0
+                  </span>
+                </div>
+                <div
+                  class="shadow rounded absolute bg-white z-10 left-20 top-2 w-24 border"
+                  style="display: none;"
+                >
+                  <div
+                    class="flex items-center p-2 m-2 hover:text-slate-50 hover:bg-violet-500 cursor-pointer rounded"
+                  >
+                    <span
+                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+                    >
+                      <span
+                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720%27%20height=%2720%27/%3e"
+                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                        />
+                      </span>
+                      <img
+                        alt="cripto"
+                        data-nimg="intrinsic"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                      <noscript />
+                    </span>
+                    <span
+                      class="ml-2 font-bold uppercase text-sm"
+                    >
+                      usdc
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="m-2"
+              >
+                <input
+                  class="bg-gray-100 rounded p-2"
+                  type="text"
+                  value="0"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pt-2 pb-3"
+        >
+          <svg
+            class="w-8 h-8 fill-violet-500 hover:fill-violet-600 cursor-pointer"
+            viewBox="0 0 50 50"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M28.8 38.2V23.9Q28.8 23.25 29.225 22.825Q29.65 22.4 30.3 22.4Q30.95 22.4 31.375 22.825Q31.8 23.25 31.8 23.9V38.25L36.9 33.2Q37.3 32.8 37.9 32.8Q38.5 32.8 38.95 33.25Q39.4 33.7 39.4 34.3Q39.4 34.9 38.95 35.35L31.4 42.9Q31.15 43.15 30.875 43.25Q30.6 43.35 30.35 43.35Q30.05 43.35 29.775 43.25Q29.5 43.15 29.3 42.9L21.7 35.25Q21.3 34.85 21.3 34.25Q21.3 33.65 21.75 33.2Q22.15 32.75 22.775 32.775Q23.4 32.8 23.85 33.25ZM16.1 9.7 11.1 14.7Q10.7 15.1 10.1 15.1Q9.5 15.1 9.05 14.65Q8.6 14.2 8.6 13.6Q8.6 13 9.05 12.55L16.6 5Q16.85 4.75 17.1 4.65Q17.35 4.55 17.65 4.55Q17.95 4.55 18.2 4.65Q18.45 4.75 18.7 5L26.3 12.6Q26.7 13 26.7 13.6Q26.7 14.2 26.25 14.65Q25.8 15.1 25.2 15.1Q24.6 15.1 24.15 14.65L19.1 9.65V24Q19.1 24.65 18.675 25.075Q18.25 25.5 17.6 25.5Q16.95 25.5 16.525 25.075Q16.1 24.65 16.1 24Z"
+            />
+          </svg>
+        </div>
+        <div
+          class="flex"
+        >
+          <div
+            class="flex"
+          >
+            <div
+              class="flex flex-col items-center"
+            >
+              <div
+                class="flex relative"
+              >
+                <div
+                  class="flex cursor-pointer"
+                >
+                  <span
+                    style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+                  >
+                    <span
+                      style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                    >
+                      <img
+                        alt=""
+                        aria-hidden="true"
+                        src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720%27%20height=%2720%27/%3e"
+                        style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                      />
+                    </span>
+                    <img
+                      alt="cripto"
+                      data-nimg="intrinsic"
+                      decoding="async"
+                      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                      style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                    />
+                    <noscript />
+                  </span>
+                  <span
+                    class="ml-2 uppercase font-bold"
+                  >
+                    usdc
+                  </span>
+                  <svg
+                    class="h-6 w-6"
+                    viewBox="0 0 50 50"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M24 30.75 12 18.75 14.15 16.6 24 26.5 33.85 16.65 36 18.8Z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  class="pl-6 text-sm text-gray-400"
+                >
+                  <span>
+                    Balance: 100
+                  </span>
+                </div>
+                <div
+                  class="shadow rounded absolute bg-white z-10 left-20 top-2 w-24 border"
+                  style="display: none;"
+                >
+                  <div
+                    class="flex items-center p-2 m-2 hover:text-slate-50 hover:bg-violet-500 cursor-pointer rounded"
+                  >
+                    <span
+                      style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+                    >
+                      <span
+                        style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                      >
+                        <img
+                          alt=""
+                          aria-hidden="true"
+                          src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2720%27%20height=%2720%27/%3e"
+                          style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                        />
+                      </span>
+                      <img
+                        alt="cripto"
+                        data-nimg="intrinsic"
+                        decoding="async"
+                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      />
+                      <noscript />
+                    </span>
+                    <span
+                      class="ml-2 font-bold uppercase text-sm"
+                    >
+                      eth
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="m-2"
+              >
+                <input
+                  class="bg-gray-100 rounded p-2"
+                  type="text"
+                  value="0"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="text-center p-4"
+      >
+        <button
+          class="text-white font-bold py-2 px-4 rounded cursor-not-allowed bg-gray-400 hover:bg-gray-600"
+        >
+          Swap
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,3 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Transaction should render correctly 1`] = `[Function]`;
+exports[`Transaction should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="container mx-auto"
+  >
+    <div
+      class="rounded-lg m-12 border shadow bg-white undefined"
+    >
+      <div
+        class="flex flex-col"
+      >
+        <div
+          class="text-center p-4 border-b"
+        >
+          <p
+            class="uppercase font-bold text-lg"
+          >
+            Transactions
+          </p>
+        </div>
+        <div
+          class="flex flex-col p-4 items-center justify-around border-b"
+        >
+          <span>
+            There are no transactions
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

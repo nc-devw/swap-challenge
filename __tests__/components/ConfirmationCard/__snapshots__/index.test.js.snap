@@ -1,3 +1,151 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Confirmation should render correctly 1`] = `[Function]`;
+exports[`Confirmation should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="rounded-lg m-12 border shadow bg-white undefined"
+  >
+    <div
+      class="flex flex-col"
+    >
+      <div
+        class="text-center p-4 border-b"
+      >
+        <p
+          class="uppercase font-bold text-lg"
+        >
+          Confirm your swap
+        </p>
+        <p
+          class="font-bold text-small text-gray-400"
+        >
+          You will receive approximately
+        </p>
+      </div>
+      <div
+        class="flex justify-around p-4 border-b"
+      >
+        <div
+          class="flex text-center w-80 justify-center break-all"
+        >
+          <div
+            class="flex flex-col items-center"
+          >
+            <div
+              class="pl-2 h-9 w-9"
+            >
+              <span
+                style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+              >
+                <span
+                  style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                >
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27100%27%20height=%27100%27/%3e"
+                    style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                  />
+                </span>
+                <img
+                  data-nimg="intrinsic"
+                  decoding="async"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                />
+                <noscript />
+              </span>
+            </div>
+            <span
+              class="pl-2 uppercase font-bold"
+            />
+            <div
+              class="ml-4 flex items-center"
+            >
+              <span
+                class="text-lg"
+              >
+                0
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex items-center"
+        >
+          <svg
+            class="h-12 w-12"
+            viewBox="0 0 50 50"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18.75 36 16.6 33.85 26.5 23.95 16.6 14.05 18.75 11.9 30.8 23.95Z"
+            />
+          </svg>
+        </div>
+        <div
+          class="flex text-center w-80 justify-center break-all"
+        >
+          <div
+            class="flex flex-col items-center"
+          >
+            <div
+              class="pl-2 h-9 w-9"
+            >
+              <span
+                style="box-sizing: border-box; display: inline-block; overflow: hidden; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"
+              >
+                <span
+                  style="box-sizing: border-box; display: block; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; max-width: 100%;"
+                >
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%27100%27%20height=%27100%27/%3e"
+                    style="display: block; max-width: 100%; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px;"
+                  />
+                </span>
+                <img
+                  data-nimg="intrinsic"
+                  decoding="async"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                />
+                <noscript />
+              </span>
+            </div>
+            <span
+              class="pl-2 uppercase font-bold"
+            />
+            <div
+              class="ml-4 flex items-center"
+            >
+              <span
+                class="text-lg"
+              >
+                0
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="text-center p-4 border-b"
+      >
+        <button
+          class="text-white font-bold py-2 px-4 rounded bg-red-500 hover:bg-red-700 w-52"
+          data-testid="confirm-cancel-button"
+        >
+          Cancel transaction
+        </button>
+        <button
+          class="mt-2 md:mt-0 md:ml-2 text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-700 w-52"
+          data-testid="confirm-ok-button"
+        >
+          Confirm transaction
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

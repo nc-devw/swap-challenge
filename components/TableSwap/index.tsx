@@ -51,7 +51,7 @@ const TableSwap = ({ coins: coinsData }: Props) => {
     });
 
     return;
-  }, [assets]);
+  }, []);
 
   const [currencyInput, setCurrencyInput] = React.useState(coins[0]);
   const [currencyOutput, setCurrencyOutput] = React.useState(coins[1]);

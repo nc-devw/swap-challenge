@@ -31,7 +31,8 @@ describe("Confirmation", () => {
   });
   it("should render correctly", () => {
     const { asFragment } = render(<ConfirmationCard />);
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toBeDefined();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it("should redirect to transactions when click in confirm button", async () => {

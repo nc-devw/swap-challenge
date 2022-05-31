@@ -1,3 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home should render correctly 1`] = `[Function]`;
+exports[`Home should render correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="container mx-auto"
+  >
+    <div
+      class="rounded-lg m-12 border shadow bg-white undefined"
+    >
+      <div
+        class="flex flex-col"
+      >
+        <div
+          class="text-center p-4 shadow"
+        >
+          <p
+            class="uppercase font-bold text-lg"
+          >
+            Your assets
+          </p>
+          <p
+            class="uppercase text-sm text-gray-400"
+          >
+            Total Balance: 0 USD
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

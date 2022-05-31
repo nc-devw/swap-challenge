@@ -22,7 +22,8 @@ jest.mock("@/context/global", () => ({
 describe("Confirmation", () => {
   it("should render correctly", () => {
     const { asFragment } = render(<Confirmation />);
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toBeDefined();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it("should redirect to swap", () => {

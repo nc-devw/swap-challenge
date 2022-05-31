@@ -12,6 +12,7 @@ jest.mock("@/context/global", () => ({
 describe("Transaction", () => {
   it("should render correctly", () => {
     const { asFragment } = render(<Transactions />);
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toBeDefined();
+    expect(asFragment()).toMatchSnapshot();
   });
 });

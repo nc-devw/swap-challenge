@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 describe("Header", () => {
   it("should render correctly", () => {
     const { asFragment } = render(<Header />);
-    expect(asFragment).toMatchSnapshot();
+    expect(asFragment()).toBeDefined();
+    expect(asFragment()).toMatchSnapshot();
   });
 });
