@@ -18,6 +18,17 @@ const mockCoins = [
   },
 ];
 
+jest.mock("@/context/global", () => ({
+  useAppContext: () => ({
+    assets: [
+      {
+        symbol: "btc",
+        quantity: 0.002,
+      },
+    ],
+  }),
+}));
+
 describe("Table Coins", () => {
   it("should render correctly", () => {
     const { asFragment } = render(<TableCoins coins={mockCoins} />);

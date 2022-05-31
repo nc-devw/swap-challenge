@@ -41,7 +41,7 @@ const TableCoins = ({ coins: coinsData }: Props) => {
         },
       ]);
     });
-  }, [assets]);
+  }, []);
 
   return (
     <Card>
